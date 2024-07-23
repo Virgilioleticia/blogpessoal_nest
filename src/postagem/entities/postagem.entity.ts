@@ -1,3 +1,4 @@
+import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
@@ -7,6 +8,7 @@ export class Postagem{
     @PrimaryGeneratedColumn() //Chave Primária AutoIncremento
     id: number;
     
+    @Transform(({ value }: TransformFnParams) => value?.trim())
     @IsNotEmpty() //Não aceitar titulo vazio
     @Column({length: 100, nullable: false}) //Definir tamanho e não aceitar valor
     titulo: string;
