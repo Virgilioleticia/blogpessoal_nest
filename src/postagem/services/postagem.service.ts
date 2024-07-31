@@ -17,7 +17,8 @@ constructor(
         // Select * from tb_postagens;
         return await this.postagemRepository.find({
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         });
     }
@@ -29,7 +30,8 @@ constructor(
                 id
             },
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         })
 
@@ -47,7 +49,8 @@ constructor(
                 titulo: ILike(`%${titulo}%`)
             },
             relations:{
-                tema: true
+                tema: true,
+                usuario: true
             }
         })
 
