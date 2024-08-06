@@ -5,7 +5,6 @@ import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Usuario')
-@UseGuards(JwtAuthGuard)
 @Controller("/usuarios")
 @ApiBearerAuth()
 export class UsuarioController{
@@ -31,6 +30,7 @@ export class UsuarioController{
     async create(@Body() usuario: Usuario): Promise<Usuario>{
         return this.usuarioService.create(usuario)
     }
+
     @UseGuards(JwtAuthGuard)
     @Put('/atualizar')
     @HttpCode(HttpStatus.OK)
